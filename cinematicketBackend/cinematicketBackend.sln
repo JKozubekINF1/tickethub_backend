@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cinematicketBackend", "cinematicketBackend\cinematicketBackend.csproj", "{5969F576-EBBB-4F57-B6A1-7DF0C92CAD3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketHUB", "TicketHUB\TicketHUB.csproj", "{CE63F729-16A2-4281-A503-545CAD8BC2E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5969F576-EBBB-4F57-B6A1-7DF0C92CAD3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5969F576-EBBB-4F57-B6A1-7DF0C92CAD3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5969F576-EBBB-4F57-B6A1-7DF0C92CAD3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5969F576-EBBB-4F57-B6A1-7DF0C92CAD3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE63F729-16A2-4281-A503-545CAD8BC2E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE63F729-16A2-4281-A503-545CAD8BC2E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE63F729-16A2-4281-A503-545CAD8BC2E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE63F729-16A2-4281-A503-545CAD8BC2E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21640A59-1E88-42C7-8972-B933BEF8F571}
+	EndGlobalSection
+EndGlobal

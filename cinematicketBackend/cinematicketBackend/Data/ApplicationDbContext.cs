@@ -1,0 +1,200 @@
+﻿using cinematicketBackend.Models;
+using CinematicketBackend.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace CinematicketBackend.Data
+{
+    public class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options) { }
+
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Seans> Seanse { get; set; }
+        public DbSet<Sala> Sale { get; set; }
+
+        public DbSet<Bilet> Bilety { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Sala>().HasData(
+                new Sala { Id = 1, Nazwa = "Sala 1", LiczbaMiejsc = 100 },
+                new Sala { Id = 2, Nazwa = "Sala 2", LiczbaMiejsc = 100 },
+                new Sala { Id = 3, Nazwa = "Sala 3", LiczbaMiejsc = 100 }
+            );
+
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Username)
+                .IsUnique();
+
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+
+            modelBuilder.Entity<Seans>().HasData(
+                new Seans { Id = 1, SalaId = 3, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "17:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 2, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "20:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 3, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-20"), Godzina = "15:15", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 4, SalaId = 3, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-20"), Godzina = "18:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 5, SalaId = 2, Miejscowosc = "Legnica", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "21:00", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 6, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "17:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 7, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "20:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 8, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-20"), Godzina = "15:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 9, SalaId = 3, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-20"), Godzina = "18:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 10, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "20:30", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 11, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "16:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 12, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "19:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 13, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-20"), Godzina = "15:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 14, SalaId = 1, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-20"), Godzina = "17:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 15, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "21:00", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 16, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "18:00", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 17, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "17:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 18, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "20:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 19, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-20"), Godzina = "16:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 20, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-20"), Godzina = "18:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 21, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "21:15", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 22, SalaId = 3, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-20"), Godzina = "19:00", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 23, SalaId = 3, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "17:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 24, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "20:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 25, SalaId = 3, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-21"), Godzina = "15:15", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 26, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-21"), Godzina = "18:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 27, SalaId = 3, Miejscowosc = "Legnica", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "21:00", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 28, SalaId = 3, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "17:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 29, SalaId = 3, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "20:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 30, SalaId = 3, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-21"), Godzina = "15:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 31, SalaId = 2, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-21"), Godzina = "18:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 32, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "20:30", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 33, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "16:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 34, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "19:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 35, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-21"), Godzina = "15:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 36, SalaId = 1, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-21"), Godzina = "17:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 37, SalaId = 1, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "21:00", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 38, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "18:00", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 39, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "17:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 40, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "20:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 41, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-21"), Godzina = "16:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 42, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-21"), Godzina = "18:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 43, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "21:15", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 44, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-21"), Godzina = "19:00", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 45, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "17:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 46, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "20:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 47, SalaId = 2, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-22"), Godzina = "15:15", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 48, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-22"), Godzina = "18:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 49, SalaId = 2, Miejscowosc = "Legnica", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "21:00", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 50, SalaId = 2, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "17:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 51, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "20:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 52, SalaId = 2, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-22"), Godzina = "15:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 53, SalaId = 2, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-22"), Godzina = "18:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 54, SalaId = 3, Miejscowosc = "Lubin", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "20:30", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 55, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "16:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 56, SalaId = 1, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "19:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 57, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-22"), Godzina = "15:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 58, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-22"), Godzina = "17:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 59, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "21:00", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 60, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "18:00", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 61, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "17:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 62, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "20:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 63, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-22"), Godzina = "16:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 64, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-22"), Godzina = "18:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 65, SalaId = 3, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "21:15", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 66, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-22"), Godzina = "19:00", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 67, SalaId = 3, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "17:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 68, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "20:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 69, SalaId = 3, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-23"), Godzina = "15:15", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 70, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-23"), Godzina = "18:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 71, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "21:00", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 72, SalaId = 3, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "17:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 73, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "20:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 74, SalaId = 2, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-23"), Godzina = "15:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 75, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-23"), Godzina = "18:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 76, SalaId = 3, Miejscowosc = "Lubin", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "20:30", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 77, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "16:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 78, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "19:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 79, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-23"), Godzina = "15:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 80, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-23"), Godzina = "17:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 81, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "21:00", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 82, SalaId = 1, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "18:00", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 83, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "17:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 84, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "20:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 85, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-23"), Godzina = "16:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 86, SalaId = 3, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-23"), Godzina = "18:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 87, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "21:15", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 88, SalaId = 3, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-23"), Godzina = "19:00", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 89, SalaId = 3, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "17:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 90, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "21:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 91, SalaId = 3, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-24"), Godzina = "14:45", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 92, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-24"), Godzina = "17:15", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 93, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "19:15", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 94, SalaId = 2, Miejscowosc = "Legnica", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "20:00", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 95, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "17:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 96, SalaId = 3, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "21:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 97, SalaId = 2, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-24"), Godzina = "14:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 98, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-24"), Godzina = "16:45", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 99, SalaId = 3, Miejscowosc = "Lubin", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "19:00", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 100, SalaId = 2, Miejscowosc = "Lubin", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "20:30", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 101, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "16:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 102, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "21:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 103, SalaId = 1, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-24"), Godzina = "14:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 104, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-24"), Godzina = "16:15", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 105, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "19:00", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 106, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "18:30", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 107, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "16:45", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 108, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "21:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 109, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-24"), Godzina = "15:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 110, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-24"), Godzina = "17:15", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 111, SalaId = 3, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "19:30", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 112, SalaId = 3, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-24"), Godzina = "18:45", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 113, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "17:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 114, SalaId = 3, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "21:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 115, SalaId = 2, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-25"), Godzina = "14:45", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 116, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-25"), Godzina = "17:15", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 117, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "19:15", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 118, SalaId = 3, Miejscowosc = "Legnica", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "20:00", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 119, SalaId = 2, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "17:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 120, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "21:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 121, SalaId = 2, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-25"), Godzina = "14:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 122, SalaId = 3, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-25"), Godzina = "16:45", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 123, SalaId = 2, Miejscowosc = "Lubin", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "19:00", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 124, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "20:30", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 125, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "16:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 126, SalaId = 1, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "21:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 127, SalaId = 1, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-25"), Godzina = "14:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 128, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-25"), Godzina = "16:15", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 129, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "19:00", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 130, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "18:30", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 131, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "16:45", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 132, SalaId = 3, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "21:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 133, SalaId = 3, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-25"), Godzina = "15:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 134, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-25"), Godzina = "17:15", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 135, SalaId = 3, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "19:30", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 136, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-25"), Godzina = "18:45", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 137, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "17:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 138, SalaId = 3, Miejscowosc = "Legnica", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "20:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 139, SalaId = 2, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-26"), Godzina = "14:45", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 140, SalaId = 3, Miejscowosc = "Legnica", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-26"), Godzina = "17:15", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 141, SalaId = 1, Miejscowosc = "Legnica", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "19:30", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 142, SalaId = 2, Miejscowosc = "Legnica", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "19:45", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 143, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "17:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 144, SalaId = 1, Miejscowosc = "Lubin", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "20:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 145, SalaId = 2, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-26"), Godzina = "14:30", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 146, SalaId = 3, Miejscowosc = "Lubin", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-26"), Godzina = "16:45", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 147, SalaId = 2, Miejscowosc = "Lubin", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "19:00", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 148, SalaId = 3, Miejscowosc = "Lubin", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "19:30", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 149, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "16:00", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 150, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "20:15", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 151, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-26"), Godzina = "14:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 152, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-26"), Godzina = "16:15", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 153, SalaId = 2, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "18:30", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 154, SalaId = 3, Miejscowosc = "Wrocław (Aleja Bielany)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "18:00", Gatunek = "Akcja / Dramat", WiekMin = 15 },
+                new Seans { Id = 155, SalaId = 1, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "16:45", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 156, SalaId = 3, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Joker: Folie à Deux", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "20:30", Gatunek = "Thriller / Musical", WiekMin = 15 },
+                new Seans { Id = 157, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-26"), Godzina = "15:00", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 158, SalaId = 3, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Vaiana 2", TypSeansu = "Dubbing", Data = DateTime.Parse("2025-10-26"), Godzina = "17:15", Gatunek = "Animacja / Przygodowy", WiekMin = 0 },
+                new Seans { Id = 159, SalaId = 2, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Beetlejuice Beetlejuice", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "19:30", Gatunek = "Komedia / Fantasy", WiekMin = 13 },
+                new Seans { Id = 160, SalaId = 3, Miejscowosc = "Wrocław (Magnolia Park)", Tytul = "Gladiator 2", TypSeansu = "Napisy", Data = DateTime.Parse("2025-10-26"), Godzina = "18:15", Gatunek = "Akcja / Dramat", WiekMin = 15 }
+            );
+        }
+    }
+}
