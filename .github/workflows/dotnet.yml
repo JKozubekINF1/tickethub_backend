@@ -10,24 +10,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    # --- TO JEST NOWA SEKCJA ---
+    # Ustawiamy domyślny katalog dla wszystkich komend "run"
+    defaults:
+      run:
+        working-directory: ./cinematicketBackend
+    # ---------------------------
+
     steps:
-    # 1. Pobranie kodu z repozytorium
     - uses: actions/checkout@v4
 
-    # 2. Instalacja środowiska .NET 8
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
 
-    # 3. Przywracanie zależności (bibliotek NuGet)
     - name: Restore dependencies
       run: dotnet restore
 
-    # 4. Budowanie projektu
     - name: Build
       run: dotnet build --no-restore
 
-    # 5. Uruchomienie testów (Backend + ewentualnie inne)
     - name: Test
       run: dotnet test --no-build --verbosity normal
