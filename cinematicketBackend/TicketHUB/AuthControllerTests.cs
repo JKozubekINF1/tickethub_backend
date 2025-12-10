@@ -2,7 +2,7 @@
 using CinematicketBackend.Controllers;
 using CinematicketBackend.Data;
 using CinematicketBackend.Models;
-using CinematicketBackend.Services;
+using CinematicketBackend.Services; 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,11 +25,14 @@ namespace CinematicketBackend.Tests
         public async Task Register_Sukces_GdyDanePoprawne()
         {
             var db = GetDatabaseContext();
+
             var mockHasher = new Mock<IPasswordHasher<User>>();
             mockHasher.Setup(h => h.HashPassword(It.IsAny<User>(), It.IsAny<string>()))
                       .Returns("hashed_secret");
+            var mockEmail = new Mock<IEmailService>();
 
-            var controller = new AuthController(db, mockHasher.Object, null!);
+            var controller = new AuthController(db, mockHasher.Object, null!, mockEmail.Object);
+
             var dto = new RegisterDto { Username = "new", Email = "new@test.com", Password = "123" };
 
             var result = await controller.Register(dto);
@@ -41,14 +44,17 @@ namespace CinematicketBackend.Tests
         [Fact]
         public async Task Register_Conflict_GdyUserIstnieje()
         {
-
             var db = GetDatabaseContext();
             db.Users.Add(new User { Username = "stary", Email = "old@test.com", PasswordHash = "x" });
             await db.SaveChangesAsync();
 
             var mockHasher = new Mock<IPasswordHasher<User>>();
-            var controller = new AuthController(db, mockHasher.Object, null!);
+            var mockEmail = new Mock<IEmailService>(); 
+
+            var controller = new AuthController(db, mockHasher.Object, null!, mockEmail.Object);
+
             var dto = new RegisterDto { Username = "stary", Email = "inny@test.com", Password = "123" };
+
 
             var result = await controller.Register(dto);
 

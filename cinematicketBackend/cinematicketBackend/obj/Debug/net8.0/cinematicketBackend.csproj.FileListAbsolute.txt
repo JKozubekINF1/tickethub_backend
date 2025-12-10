@@ -622,8 +622,10 @@ C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematick
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\cinematicketBackend.pdb
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\Azure.Identity.dll
+C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\Castle.Core.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\Humanizer.dll
+C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\MailKit.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -660,6 +662,7 @@ C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematick
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\Microsoft.OpenApi.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\MimeKit.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\Moq.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
@@ -677,6 +680,7 @@ C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematick
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\System.Memory.Data.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\System.Runtime.Caching.dll
+C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\System.Security.Permissions.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\System.Windows.Extensions.dll
@@ -742,6 +746,7 @@ C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematick
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\obj\Debug\net8.0\cinematicketBackend.csproj.AssemblyReference.cache
@@ -761,10 +766,10 @@ C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematick
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\obj\Debug\net8.0\cinemati.714F756B.Up2Date
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\obj\Debug\net8.0\cinematicketBackend.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\obj\Debug\net8.0\refint\cinematicketBackend.dll
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\obj\Debug\net8.0\cinematicketBackend.pdb
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\obj\Debug\net8.0\cinematicketBackend.genruntimeconfig.cache
 C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\obj\Debug\net8.0\ref\cinematicketBackend.dll
+C:\Users\tytaj\Documents\GitHub\tickethub_backend\cinematicketBackend\cinematicketBackend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
