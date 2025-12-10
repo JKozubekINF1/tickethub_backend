@@ -19,7 +19,7 @@ namespace CinematicketBackend.Controllers
         }
 
         [HttpPost("kup")]
-        [Authorize] 
+        [Authorize]
         public async Task<IActionResult> KupBilet(int seansId, int numerMiejsca)
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -50,7 +50,7 @@ namespace CinematicketBackend.Controllers
             {
                 SeansId = seansId,
                 NumerMiejsca = numerMiejsca,
-                UserId = userId 
+                UserId = userId
             };
 
             _db.Bilety.Add(bilet);
@@ -101,7 +101,7 @@ namespace CinematicketBackend.Controllers
             var bilety = await _db.Bilety
                 .Include(b => b.Seans)
                 .ThenInclude(s => s.Sala)
-                .Where(b => b.UserId == userId) 
+                .Where(b => b.UserId == userId)
                 .Where(b => b.Seans.Sala != null)
                 .ToListAsync();
 
@@ -118,9 +118,8 @@ namespace CinematicketBackend.Controllers
             }));
         }
 
-
         [HttpDelete("anuluj/{biletId}")]
-        [Authorize] 
+        [Authorize]
         public async Task<IActionResult> AnulujBilet(int biletId)
         {
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -130,16 +129,44 @@ namespace CinematicketBackend.Controllers
             var bilet = await _db.Bilety
                 .Include(b => b.Seans)
                 .FirstOrDefaultAsync(b => b.Id == biletId);
+
             if (bilet == null)
                 return NotFound("Bilet nie został znaleziony");
 
             if (bilet.UserId != userId)
                 return Forbid("Nie masz uprawnień do anulowania tego biletu");
 
-            _db.Bilety.Remove(bilet);
+            var biletyDoUsuniecia = new List<Bilet> { bilet };
+
+            if (bilet.NumerMiejsca > 80)
+            {
+                int numerPartnera;
+
+                if (bilet.NumerMiejsca % 2 != 0)
+                {
+                    numerPartnera = bilet.NumerMiejsca + 1;
+                }
+                else
+                {
+                    numerPartnera = bilet.NumerMiejsca - 1;
+                }
+
+                var biletPartnera = await _db.Bilety
+                    .FirstOrDefaultAsync(b =>
+                        b.SeansId == bilet.SeansId &&
+                        b.NumerMiejsca == numerPartnera &&
+                        b.UserId == userId);
+
+                if (biletPartnera != null)
+                {
+                    biletyDoUsuniecia.Add(biletPartnera);
+                }
+            }
+
+            _db.Bilety.RemoveRange(biletyDoUsuniecia);
             await _db.SaveChangesAsync();
 
-            return Ok(new { message = "Bilet został anulowany pomyślnie." });
+            return Ok(new { message = $"Anulowano pomyślnie. Liczba usuniętych biletów: {biletyDoUsuniecia.Count}" });
         }
     }
 }

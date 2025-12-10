@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ztt8IdC7B5o=",
+  "dgSpecHash": "ITUNGDio8uM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\tytaj\\Desktop\\cinematicketBackend\\TicketHUB\\TicketHUB.csproj",
+  "projectFilePath": "C:\\Users\\tytaj\\Documents\\GitHub\\tickethub_backend\\cinematicketBackend\\TicketHUB\\TicketHUB.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tytaj\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\tytaj\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
