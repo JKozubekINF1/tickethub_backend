@@ -21,5 +21,9 @@ namespace CinematicketBackend.Models
 
         [ForeignKey("UserId")]
         public User? User { get; set; }
+
+        [Required]
+        [StringLength(6)]
+        public string KodBiletu { get; set; } = string.Empty;
     }
 }

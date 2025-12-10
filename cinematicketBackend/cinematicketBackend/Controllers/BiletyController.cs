@@ -18,6 +18,22 @@ namespace CinematicketBackend.Controllers
             _db = db;
         }
 
+        private async Task<string> GenerujUnikalnyKodBiletu()
+        {
+            var random = new Random();
+            string kod;
+            bool istnieje;
+
+            do
+            {
+                kod = random.Next(100000, 999999).ToString();
+                istnieje = await _db.Bilety.AnyAsync(b => b.KodBiletu == kod);
+            }
+            while (istnieje);
+
+            return kod;
+        }
+
         [HttpPost("kup")]
         [Authorize]
         public async Task<IActionResult> KupBilet(int seansId, int numerMiejsca)
@@ -46,11 +62,14 @@ namespace CinematicketBackend.Controllers
             if (miejsceZajete)
                 return BadRequest("Wybrane miejsce jest już zajęte");
 
+            string wygenerowanyKod = await GenerujUnikalnyKodBiletu();
+
             var bilet = new Bilet
             {
                 SeansId = seansId,
                 NumerMiejsca = numerMiejsca,
-                UserId = userId
+                UserId = userId,
+                KodBiletu = wygenerowanyKod
             };
 
             _db.Bilety.Add(bilet);
@@ -61,7 +80,8 @@ namespace CinematicketBackend.Controllers
                 bilet.Id,
                 bilet.SeansId,
                 bilet.NumerMiejsca,
-                bilet.UserId
+                bilet.UserId,
+                bilet.KodBiletu
             });
         }
 
@@ -110,6 +130,7 @@ namespace CinematicketBackend.Controllers
                 b.Id,
                 b.SeansId,
                 b.NumerMiejsca,
+                b.KodBiletu,
                 SeansTytul = b.Seans.Tytul,
                 SeansData = b.Seans.Data,
                 SeansGodzina = b.Seans.Godzina,
